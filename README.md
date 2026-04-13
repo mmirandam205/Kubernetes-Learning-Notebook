@@ -2,7 +2,7 @@
 
 ![Banner](assets/banner.svg)
 
-A structured, hands-on reference guide for learning Kubernetes — from first principles to production-ready deployment patterns. Each module builds on the previous one, combining conceptual explanations with real YAML examples and kubectl commands.
+A structured, hands-on reference guide for learning Kubernetes — from first principles to production-ready deployment patterns. Each module builds on the previous one, combining conceptual explanations with practical examples and exam-relevant details.
 
 ## Table of Contents
 
@@ -22,6 +22,7 @@ A structured, hands-on reference guide for learning Kubernetes — from first pr
 | 12 | [Helm and Package Management](MODULE_12_HELM_AND_PACKAGE_MANAGEMENT.md) | Helm charts, repositories, values, templating, upgrades, rollbacks, creating custom charts |
 | 13 | [CI/CD and GitOps](MODULE_13_CICD_AND_GITOPS.md) | GitHub Actions pipelines, ArgoCD, Flux, GitOps principles, image promotion, multi-environment delivery |
 | 14 | [Troubleshooting](MODULE_14_TROUBLESHOOTING.md) | Pod failures, CrashLoopBackOff, ImagePullBackOff, OOMKilled, networking, DNS, storage, node and control plane issues |
+| — | [Best Practices](BEST_PRACTICES.md) | CKA-level best practices across all domains: workloads, security, networking, storage, scheduling, GitOps, and more |
 | — | [Commands Reference](COMMANDS_REFERENCE.md) | Quick-reference cheat sheet of the most commonly used kubectl commands |
 | — | [Additional Resources](ADDITIONAL_RESOURCES.md) | Books, courses, certifications, tools, and community links |
 
@@ -30,4 +31,5 @@ A structured, hands-on reference guide for learning Kubernetes — from first pr
 1. **Follow the modules in order** if you are new to Kubernetes — each module introduces concepts that later ones depend on.
 2. **Jump to a specific module** if you already have background knowledge and want to focus on a particular topic.
 3. **Consult the Commands Reference** at any time for a quick reminder of the most useful kubectl commands without reading through full explanations.
-4. All content is written in plain Markdown and renders well on GitHub, in VS Code (with the Markdown preview), or any other Markdown viewer.
+4. **Review the Best Practices guide** to consolidate your knowledge with production-grade and CKA-level recommendations across every domain.
+5. All content is written in plain Markdown and renders well on GitHub, in VS Code (with the Markdown preview), or any other Markdown viewer.
