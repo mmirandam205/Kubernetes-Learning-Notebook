@@ -164,3 +164,163 @@ This document serves as a comprehensive reference for commonly used `kubectl` co
   ```
 
 This is a concise reference guide for `kubectl`. For more detailed information, consult the official Kubernetes documentation.
+
+## Autoscaling
+
+- Create an HPA for a Deployment:
+  ```bash
+  kubectl autoscale deployment <name> --cpu-percent=50 --min=2 --max=10
+  ```
+
+- List all HPAs:
+  ```bash
+  kubectl get hpa
+  ```
+
+- Describe an HPA:
+  ```bash
+  kubectl describe hpa <name>
+  ```
+
+- Show resource usage per Pod:
+  ```bash
+  kubectl top pods
+  ```
+
+- Show resource usage per node:
+  ```bash
+  kubectl top nodes
+  ```
+
+## StatefulSets
+
+- List all StatefulSets:
+  ```bash
+  kubectl get statefulsets
+  ```
+
+- Describe a StatefulSet:
+  ```bash
+  kubectl describe statefulset <name>
+  ```
+
+- Scale a StatefulSet:
+  ```bash
+  kubectl scale statefulset <name> --replicas=<n>
+  ```
+
+- Delete a StatefulSet while keeping its Pods:
+  ```bash
+  kubectl delete statefulset <name> --cascade=orphan
+  ```
+
+## DaemonSets, Jobs, and CronJobs
+
+- List all DaemonSets:
+  ```bash
+  kubectl get daemonsets
+  ```
+
+- List all Jobs:
+  ```bash
+  kubectl get jobs
+  ```
+
+- List all CronJobs:
+  ```bash
+  kubectl get cronjobs
+  ```
+
+- Create a one-off Job:
+  ```bash
+  kubectl create job <name> --image=<image>
+  ```
+
+- Create a CronJob:
+  ```bash
+  kubectl create cronjob <name> --image=<image> --schedule="*/5 * * * *"
+  ```
+
+## Scheduling
+
+- Add a taint to a node:
+  ```bash
+  kubectl taint nodes <node-name> key=value:NoSchedule
+  ```
+
+- Remove a taint from a node:
+  ```bash
+  kubectl taint nodes <node-name> key=value:NoSchedule-
+  ```
+
+- Label a node:
+  ```bash
+  kubectl label nodes <node-name> <key>=<value>
+  ```
+
+- List all PriorityClasses:
+  ```bash
+  kubectl get priorityclasses
+  ```
+
+## Helm
+
+- Add a Helm repository:
+  ```bash
+  helm repo add <name> <url>
+  ```
+
+- Update repository cache:
+  ```bash
+  helm repo update
+  ```
+
+- Search for charts:
+  ```bash
+  helm search repo <keyword>
+  ```
+
+- Install a chart as a named release:
+  ```bash
+  helm install <release-name> <chart>
+  ```
+
+- Upgrade a release:
+  ```bash
+  helm upgrade <release-name> <chart>
+  ```
+
+- Roll back a release to a previous revision:
+  ```bash
+  helm rollback <release-name> <revision>
+  ```
+
+- Uninstall a release:
+  ```bash
+  helm uninstall <release-name>
+  ```
+
+- List all releases:
+  ```bash
+  helm list
+  ```
+
+- Show release status:
+  ```bash
+  helm status <release-name>
+  ```
+
+- Render chart templates locally:
+  ```bash
+  helm template <release-name> <chart>
+  ```
+
+- Lint a chart:
+  ```bash
+  helm lint <chart-path>
+  ```
+
+- Scaffold a new chart:
+  ```bash
+  helm create <chart-name>
+  ```
