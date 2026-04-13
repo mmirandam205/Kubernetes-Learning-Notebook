@@ -2,7 +2,7 @@
 
 ![Banner](assets/banner.svg)
 
-A structured, hands-on reference guide for learning Kubernetes — from first principles to production-ready deployment patterns. Each module builds on the previous one, combining conceptual explanations with practical examples and exam-relevant details.
+A structured, hands-on reference guide for learning Kubernetes — from first principles to production-ready deployment patterns. Each module builds on the previous one, combining conceptual explanations with practical examples.
 
 ## Table of Contents
 
@@ -33,3 +33,15 @@ A structured, hands-on reference guide for learning Kubernetes — from first pr
 3. **Consult the Commands Reference** at any time for a quick reminder of the most useful kubectl commands without reading through full explanations.
 4. **Review the Best Practices guide** to consolidate your knowledge with production-grade and CKA-level recommendations across every domain.
 5. All content is written in plain Markdown and renders well on GitHub, in VS Code (with the Markdown preview), or any other Markdown viewer.
+
+## License
+
+This repository is dual-licensed:
+
+- **[MIT License](LICENSE)** — You are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of this content, provided the original copyright notice and this permission notice are included in all copies or substantial portions.
+- **[Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)** — You are free to share and adapt the material for any purpose, even commercially, as long as appropriate credit is given to the original author.
+
+> For code and scripts: **MIT License** applies.
+> For documentation and written content: **CC BY 4.0** applies.
+
+© 2026 [mmirandam205](https://github.com/mmirandam205)
