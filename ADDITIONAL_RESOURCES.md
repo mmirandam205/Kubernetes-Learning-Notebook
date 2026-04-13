@@ -2,6 +2,15 @@
 
 This section collects the best external resources for deepening your Kubernetes knowledge, from official documentation to online courses, books, tools, and community forums.
 
+## Table of Contents
+- [Official Documentation](#official-documentation)
+- [Online Courses](#online-courses)
+- [Books](#books)
+- [Certifications](#certifications)
+- [Tools and Ecosystem](#tools-and-ecosystem)
+- [Community Forums and Channels](#community-forums-and-channels)
+- [Useful GitHub Repositories](#useful-github-repositories)
+
 ## Official Documentation
 - [Kubernetes Official Docs](https://kubernetes.io/docs/)
 - [Kubernetes API Reference](https://kubernetes.io/docs/reference/kubernetes-api/)
