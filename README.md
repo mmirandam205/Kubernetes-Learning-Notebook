@@ -21,6 +21,7 @@ A structured, hands-on reference guide for learning Kubernetes — from first pr
 | 11 | [StatefulSets and Operators](MODULE_11_STATEFULSETS_AND_OPERATORS.md) | StatefulSets deep dive, headless Services, Operators, CRDs, Operator SDK, Helm-based operators |
 | 12 | [Helm and Package Management](MODULE_12_HELM_AND_PACKAGE_MANAGEMENT.md) | Helm charts, repositories, values, templating, upgrades, rollbacks, creating custom charts |
 | 13 | [CI/CD and GitOps](MODULE_13_CICD_AND_GITOPS.md) | GitHub Actions pipelines, ArgoCD, Flux, GitOps principles, image promotion, multi-environment delivery |
+| 14 | [Troubleshooting](MODULE_14_TROUBLESHOOTING.md) | Pod failures, CrashLoopBackOff, ImagePullBackOff, OOMKilled, networking, DNS, storage, node and control plane issues |
 | — | [Commands Reference](COMMANDS_REFERENCE.md) | Quick-reference cheat sheet of the most commonly used kubectl commands |
 | — | [Additional Resources](ADDITIONAL_RESOURCES.md) | Books, courses, certifications, tools, and community links |
 
