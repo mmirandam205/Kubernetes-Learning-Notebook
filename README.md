@@ -23,4 +23,4 @@ Read the modules in order — each one builds on the previous. Use `COMMANDS_REF
 | [Module 12](MODULE_12_HELM_AND_PACKAGE_MANAGEMENT.md) | Helm and Package Management |
 | [Module 13](MODULE_13_CICD_AND_GITOPS.md) | CI/CD and GitOps |
 | [Commands Reference](COMMANDS_REFERENCE.md) | kubectl Cheat Sheet |
-| [Additional Resources](ADDITIONAL_RESOURCES.md) | Books, Courses, Tools |
+| [Additional Resources](ADDITIONAL_RESOURCES.md) | Docs, Courses, Books, Certifications, Tools, Community, Repos |
