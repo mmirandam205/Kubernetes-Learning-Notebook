@@ -1,5 +1,7 @@
 # Kubernetes Learning Notebook
 
+![Banner](assets/banner.svg)
+
 A structured, hands-on reference guide for learning Kubernetes — from first principles to production-ready deployment patterns. Each module builds on the previous one, combining conceptual explanations with real YAML examples and kubectl commands.
 
 ## Table of Contents
@@ -19,12 +21,12 @@ A structured, hands-on reference guide for learning Kubernetes — from first pr
 | 11 | [StatefulSets and Operators](MODULE_11_STATEFULSETS_AND_OPERATORS.md) | StatefulSets deep dive, headless Services, Operators, CRDs, Operator SDK, Helm-based operators |
 | 12 | [Helm and Package Management](MODULE_12_HELM_AND_PACKAGE_MANAGEMENT.md) | Helm charts, repositories, values, templating, upgrades, rollbacks, creating custom charts |
 | 13 | [CI/CD and GitOps](MODULE_13_CICD_AND_GITOPS.md) | GitHub Actions pipelines, ArgoCD, Flux, GitOps principles, image promotion, multi-environment delivery |
-| – | [Commands Reference](COMMANDS_REFERENCE.md) | Quick-reference cheat sheet of the most commonly used `kubectl` commands |
-| – | [Additional Resources](ADDITIONAL_RESOURCES.md) | Books, courses, certifications, tools, and community links |
+| — | [Commands Reference](COMMANDS_REFERENCE.md) | Quick-reference cheat sheet of the most commonly used kubectl commands |
+| — | [Additional Resources](ADDITIONAL_RESOURCES.md) | Books, courses, certifications, tools, and community links |
 
 ## How to Use This Notebook
 
 1. **Follow the modules in order** if you are new to Kubernetes — each module introduces concepts that later ones depend on.
 2. **Jump to a specific module** if you already have background knowledge and want to focus on a particular topic.
-3. **Consult the Commands Reference** at any time for a quick reminder of the most useful `kubectl` commands without reading through full explanations.
+3. **Consult the Commands Reference** at any time for a quick reminder of the most useful kubectl commands without reading through full explanations.
 4. All content is written in plain Markdown and renders well on GitHub, in VS Code (with the Markdown preview), or any other Markdown viewer.
