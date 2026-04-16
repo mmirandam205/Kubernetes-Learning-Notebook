@@ -95,6 +95,95 @@ spec:
 
 ---
 
+## Selectors
+Selectors are the mechanism Kubernetes uses to filter and target objects by their labels. A selector says "give me all objects whose labels match these criteria." There are two types: **equality-based** (uses `=` / `!=`) and **set-based** (uses `in` / `notin` / `exists`).
+
+**Example YAML — equality-based selector in a Service:**
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app: my-app          # Equality-based: select Pods where label app = my-app
+    env: production      # AND label env = production (all conditions must match)
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+```
+
+**Example YAML — set-based selector in a Job:**
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: my-job
+spec:
+  selector:
+    matchLabels:
+      app: my-app                 # Shorthand equality check
+    matchExpressions:
+      - key: env                  # Set-based: env must be one of these values
+        operator: In
+        values:
+          - production
+          - staging
+      - key: tier                 # Set-based: tier must NOT be "backend"
+        operator: NotIn
+        values:
+          - backend
+  template:
+    metadata:
+      labels:
+        app: my-app
+        env: production
+        tier: frontend
+    spec:
+      containers:
+        - name: my-container
+          image: nginx:1.25
+```
+> **Key lines:** `selector.matchLabels` is syntactic sugar for equality checks. `selector.matchExpressions` supports richer set-based filtering with `In`, `NotIn`, `Exists`, and `DoesNotExist` operators. All conditions in a selector are ANDed together.
+
+---
+
+## Annotations
+Annotations are key-value pairs, just like labels, but they are **not** used for selection or grouping. Instead, they carry arbitrary non-identifying metadata — things like build info, deployment timestamps, tool configuration, or URLs — that tools and humans can read.
+
+**Example YAML:**
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+  annotations:
+    kubernetes.io/change-cause: "Bumped nginx from 1.24 to 1.25"   # Tracks rollout reason (used by kubectl rollout history)
+    prometheus.io/scrape: "true"                                    # Tells Prometheus to scrape this workload
+    prometheus.io/port: "9090"                                      # Port Prometheus should scrape
+    owner: "platform-team"                                          # Human-readable ownership info
+    docs: "https://wiki.example.com/my-deployment"                  # Link to runbook / documentation
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+      annotations:
+        co.elastic.logs/enabled: "true"    # Pod-level annotation telling the log agent to collect logs
+    spec:
+      containers:
+        - name: my-container
+          image: nginx:1.25
+```
+> **Key lines:** Annotations live under `metadata.annotations`. Unlike labels, they **cannot** be used in `selector` fields. Values must always be strings (wrap numbers and booleans in quotes). Common uses include rollout history (`kubernetes.io/change-cause`), monitoring scrape config, and CI/CD build metadata.
+
+---
+
 ## Namespaces
 Namespaces are a way to divide cluster resources between multiple users or teams. They enable the creation of multiple environments within the same cluster, like development, testing, and production.
 
@@ -178,7 +267,7 @@ spec:
               name: my-secret   # Name of the Secret object
               key: password     # Specific key inside the Secret to expose
 ```
-> **Key lines:** `type: Opaque` is the default for arbitrary secrets. Values under `data` **must** be base64-encoded. `secretKeyRef` injects a single key as an environment variable without exposing the whole Secret.
+> **Key lines:** `type: Opaque` is the default for arbitrary secrets. Values under `data` **must** be base64-encoded. `secretKeyRef` injects a single key as an environment variable without exposing the rest of the Secret.
 
 ---
 
@@ -205,7 +294,7 @@ spec:
         - name: my-container
           image: nginx:1.25
 ```
-> **Key lines:** `replicas` is the heart of a ReplicaSet — it self-heals by creating or deleting Pods to match this count. In practice, prefer a **Deployment** over a bare ReplicaSet so you also get rolling updates and rollback.
+> **Key lines:** `replicas` is the heart of a ReplicaSet — it self-heals by creating or deleting Pods to match this count. In practice, prefer a **Deployment** over a bare ReplicaSet so you also get rolling updates and rollback support.
 
 ---
 
@@ -244,7 +333,7 @@ spec:
           requests:
             storage: 1Gi                  # Each Pod requests 1 GiB of persistent storage
 ```
-> **Key lines:** `serviceName` links to a headless Service so each Pod gets a stable DNS entry like `my-statefulset-0.my-service`. `volumeClaimTemplates` provisions a dedicated PersistentVolumeClaim per Pod, so data survives Pod restarts.
+> **Key lines:** `serviceName` links to a headless Service so each Pod gets a stable DNS entry like `my-statefulset-0.my-service`. `volumeClaimTemplates` provisions a dedicated PersistentVolumeClaim per replica, ensuring data survives Pod restarts.
 
 ---
 
@@ -281,4 +370,4 @@ spec:
           hostPath:
             path: /var/log            # Reads directly from the Node filesystem
 ```
-> **Key lines:** A DaemonSet needs **no** `replicas` field — it runs one Pod per Node automatically. `tolerations` let the Pod land on nodes that would otherwise repel it (e.g., control-plane nodes). `hostPath` volumes are common in DaemonSets for node-level log or metrics collection.
+> **Key lines:** A DaemonSet needs **no** `replicas` field — it runs one Pod per Node automatically. `tolerations` let the Pod land on nodes that would otherwise repel it (e.g., control-plane nodes). `hostPath` volumes give the Pod direct access to the Node's filesystem.
